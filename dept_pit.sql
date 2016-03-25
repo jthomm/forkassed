@@ -1,4 +1,4 @@
-CREATE TABLE zips_pit (
+CREATE TABLE dept_pit (
     fg_name TEXT
   , team TEXT
   , w INT
