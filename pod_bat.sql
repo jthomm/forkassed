@@ -6,6 +6,7 @@ CREATE TABLE pod_bat (
   , team TEXT
   , pos TEXT
   , lineup INT
+  , g INT
   , ab INT
   , pa INT
   , h INT
