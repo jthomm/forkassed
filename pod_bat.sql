@@ -1,10 +1,12 @@
 CREATE TABLE pod_bat (
     name TEXT
   , fg_id TEXT
+  , age INT
   , lg TEXT
   , team TEXT
   , pos TEXT
   , lineup INT
+  , g INT
   , ab INT
   , pa INT
   , h INT

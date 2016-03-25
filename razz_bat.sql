@@ -1,5 +1,5 @@
 CREATE TABLE razz_bat (
-    razz_id TEXT
+    bis_id TEXT
   , name TEXT
   , team TEXT
   , bats TEXT

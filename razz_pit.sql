@@ -1,5 +1,5 @@
 CREATE TABLE razz_pit (
-    razz_id TEXT
+    bis_id TEXT
   , name TEXT
   , team TEXT
   , pos TEXT

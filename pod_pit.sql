@@ -1,6 +1,7 @@
 CREATE TABLE pod_pit (
     name TEXT
   , fg_id TEXT
+  , age INT
   , lg TEXT
   , team TEXT
   , role TEXT
