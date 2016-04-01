@@ -135,7 +135,7 @@ GROUP BY t.fg_name
     JOIN id_map u
       ON u.fg_id = t.bis_id
     LEFT
-    JOIN v_fg_id_by_fg_name v
+    JOIN v_fg_id_by_fg_name_pit v
       ON v.fg_name = t.name
 ;
 
