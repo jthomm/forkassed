@@ -5,21 +5,21 @@ CREATE TABLE clay_adj_pit (
   , lg TEXT
   , age INT
   , role TEXT
-  , w
-  , l
-  , sv
-  , g
-  , gs
+  , w INT
+  , l INT
+  , sv INT
+  , g INT
+  , gs INT
   , ip FLOAT
-  , h
-  , r
-  , er
-  , hr
-  , bb
-  , so
-  , gbo
+  , h INT
+  , r INT
+  , er INT
+  , hr INT
+  , bb INT
+  , so INT
+  , gbo INT
   , babip FLOAT
-  , trend
+  , trend INT
   , whip FLOAT
   , ra FLOAT
   , era FLOAT
