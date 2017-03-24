@@ -9,7 +9,7 @@ GROUP BY t.fg_name
 
   CREATE VIEW v_stmr_norm_bat_pa AS
   SELECT t.fg_id,
-         NULL /*1.0*t.g/pa*/ AS g,
+         1.0*t.g/pa AS g,
          1.0*t.pa AS pa,
          1.0*t.ab/t.pa AS ab,
          1.0*(t.h - t.b2 - t.b3 - t.hr)/t.pa AS b1,
