@@ -19,6 +19,7 @@ CREATE TABLE stmr_norm_pit (
   , fip FLOAT
   , war FLOAT
   , war_ra9 FLOAT
+  , adp FLOAT
   , fg_id TEXT
 )
 ;

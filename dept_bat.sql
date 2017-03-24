@@ -23,6 +23,7 @@ CREATE TABLE dept_bat (
   , fld FLOAT
   , bsr FLOAT
   , war FLOAT
+  , adp FLOAT
   , fg_id TEXT
 )
 ;

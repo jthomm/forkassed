@@ -8,7 +8,6 @@ CREATE TABLE pod_pit (
   , gs FLOAT
   , ip FLOAT
   , ip_s FLOAT
-  , tbf FLOAT
   , w FLOAT
   , l FLOAT
   , qs FLOAT
