@@ -1,6 +1,7 @@
 CREATE TABLE stmr_bat (
     fg_name TEXT
   , team TEXT
+  , g INT
   , pa INT
   , ab INT
   , h INT
@@ -28,6 +29,8 @@ CREATE TABLE stmr_bat (
   , off FLOAT
   , def FLOAT
   , war FLOAT
+  , _4 TEXT
+  , adp FLOAT
   , fg_id TEXT
 )
 ;
