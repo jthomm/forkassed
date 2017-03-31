@@ -151,6 +151,24 @@ GROUP BY t.fg_name
       ON v.fg_name = t.first || ' ' || t.last
 ;
 
+  CREATE VIEW v_atc_bat_pa AS
+  SELECT t.fg_id,
+         1.0*t.g/pa AS g,
+         1.0*t.pa AS pa,
+         1.0*t.ab/t.pa AS ab,
+         1.0*(t.h - t.b2 - t.b3 - t.hr)/t.pa AS b1,
+         1.0*t.b2/t.pa AS b2,
+         1.0*t.b3/t.pa AS b3,
+         1.0*t.hr/t.pa AS hr,
+         1.0*t.r/t.pa AS r,
+         1.0*t.rbi/t.pa AS rbi,
+         1.0*t.bb/t.pa AS bb,
+         1.0*t.so/t.pa AS so,
+         1.0*t.sb/t.pa AS sb,
+         1.0*t.cs/t.pa AS cs
+    FROM atc_bat t
+;
+
   CREATE VIEW v_union_bat_pa AS
   SELECT 'stmr_norm' AS source, t.* FROM v_stmr_norm_bat_pa t
    UNION
@@ -168,6 +186,9 @@ GROUP BY t.fg_name
    UNION
      ALL
   SELECT 'dept' AS source, t.* FROM v_dept_bat_pa t
+   UNION
+     ALL
+  SELECT 'atc' AS source, t.* FROM v_atc_bat_pa t
 ;
 
   CREATE VIEW v_average_bat_pa AS
@@ -191,6 +212,7 @@ GROUP BY t.fg_name
          SUM(CASE t.source WHEN 'razz' THEN 1 ELSE 0 END) AS razz,
          SUM(CASE t.source WHEN 'clay_adj' THEN 1 ELSE 0 END) AS clay_adj,
          SUM(CASE t.source WHEN 'dept' THEN 1 ELSE 0 END) AS dept,
+         SUM(CASE t.source WHEN 'atc' THEN 1 ELSE 0 END) AS atc,
          COUNT(*) AS sources
     FROM v_union_bat_pa t
     JOIN weights_bat u
@@ -228,6 +250,15 @@ GROUP BY t.fg_id
     JOIN id_map u ON u.fg_id = t.fg_id
    WHERE stmr_norm = 1
      AND razz = 1
-     AND dept = 1
-     AND zips + pod >= 1
+     AND atc + pod >= 1
+;
+
+  CREATE VIEW v_bat_value AS
+  SELECT *,
+         12.7156*hr/g - 2.1223 AS hr_v,
+         6.2007*rbi/g - 3.3974 AS rbi_v,
+         9.3774*sb/g - 0.6894 AS sb_v,
+         8.8916*r/g - 5.0863 AS r_v,
+         8.2050*(1.0*ab/g)*(1.0*(b1 + b2 + b3 + hr)/ab - 0.2821) AS ba_v
+    FROM v_bat
 ;
