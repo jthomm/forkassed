@@ -6,23 +6,23 @@ CREATE TABLE pod_bat (
   , team TEXT
   , pos TEXT
   , lineup INT
-  , g INT
-  , ab INT
-  , pa INT
-  , h INT
-  , b1 INT
-  , b2 INT
-  , b3 INT
-  , hr INT
-  , r INT
-  , rbi INT
-  , bb INT
-  , ibb INT
-  , so INT
-  , hbp INT
-  , sf INT
-  , sb INT
-  , cs INT
+  , g FLOAT
+  , ab FLOAT
+  , pa FLOAT
+  , h FLOAT
+  , b1 FLOAT
+  , b2 FLOAT
+  , b3 FLOAT
+  , hr FLOAT
+  , r FLOAT
+  , rbi FLOAT
+  , bb FLOAT
+  , ibb FLOAT
+  , so FLOAT
+  , hbp FLOAT
+  , sf FLOAT
+  , sb FLOAT
+  , cs FLOAT
   , avg FLOAT
   , obp FLOAT
   , slg FLOAT
