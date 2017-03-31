@@ -139,6 +139,26 @@ GROUP BY t.fg_name
       ON v.fg_name = t.name
 ;
 
+  CREATE VIEW v_atc_pit_ip AS
+  SELECT t.fg_id,
+         1.0*t.g/t.ip g,
+         1.0*t.gs/t.ip gs,
+         t.ip ip,
+         1.0*t.h/t.ip h,
+         1.0*t.er/t.ip er,
+         1.0*t.bb/t.ip bb,
+         1.0*t.so/t.ip so,
+         1.0*t.hr/t.ip hr,
+         1.0*t.w/t.ip w,
+         1.0*t.l/t.ip l,
+         1.0*t.sv/t.ip sv,
+         NULL bsv,
+         NULL hld,
+         NULL qs,
+         CASE WHEN 1.0*t.gs/t.g >= 0.6 THEN 'SP' ELSE 'RP' END role
+    FROM atc_pit t
+;
+
   CREATE VIEW v_union_pit_ip AS
   SELECT 'stmr_norm' AS source, t.* FROM v_stmr_norm_pit_ip t
    UNION
@@ -156,6 +176,9 @@ GROUP BY t.fg_name
    UNION
      ALL
   SELECT 'dept' AS source, t.* FROM v_dept_pit_ip t
+   UNION
+     ALL
+  SELECT 'atc' AS source, t.* FROM v_atc_pit_ip t
 ;
 
   CREATE VIEW v_average_pit_ip AS
@@ -180,6 +203,7 @@ GROUP BY t.fg_name
          SUM(CASE t.source WHEN 'razz' THEN 1 ELSE 0 END) AS razz,
          SUM(CASE t.source WHEN 'clay_adj' THEN 1 ELSE 0 END) AS clay_adj,
          SUM(CASE t.source WHEN 'dept' THEN 1 ELSE 0 END) AS dept,
+         SUM(CASE t.source WHEN 'atc' THEN 1 ELSE 0 END) AS atc,
          COUNT(*) AS sources,
          SUM(CASE t.role WHEN 'SP' THEN 1 ELSE 0 END) AS sp
     FROM v_union_pit_ip t
@@ -214,6 +238,7 @@ GROUP BY t.fg_id
          t.razz,
          t.clay_adj,
          t.dept,
+         t.atc,
          t.sources,
          t.sp
     FROM v_average_pit_ip t
@@ -221,6 +246,5 @@ GROUP BY t.fg_id
     JOIN id_map u ON u.fg_id = t.fg_id
    WHERE stmr_norm = 1
      AND razz = 1
-     AND dept = 1
-     AND zips + pod >= 1
+     AND atc + pod >= 1
 ;
