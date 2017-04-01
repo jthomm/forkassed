@@ -18,6 +18,7 @@ CREATE TABLE fans_pit (
   , bb_9 FLOAT
   , fip FLOAT
   , war FLOAT
+  , adp FLOAT
   , fg_id TEXT
 )
 ;
