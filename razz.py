@@ -1,11 +1,8 @@
-#!/Users/jaredmartin/Virtualenvs/2711/bin/python
+#!/usr/local/bin/python3
 
 import sys
 from lxml import etree
 import csv
-
-def none_or_utf8(obj):
-    return None if obj is None else obj.encode('utf-8')
 
 root = etree.parse(sys.stdin, etree.HTMLParser())
 
@@ -15,10 +12,12 @@ writer = csv.writer(sys.stdout, quoting=csv.QUOTE_MINIMAL, delimiter=',')
 
 for tr in trs:
     tds = tr.findall('./td')
+    name_a = tds[1].find('./a')
+    team_a = tds[2].find('./a')
     writer.writerow((
-        tds[1].find('./a').attrib['href'].split('/')[2],
-        none_or_utf8(tds[1].find('./a').text),
-        tds[2].find('./a').text,
+        name_a.attrib['href'].split('/')[2],
+        name_a.text,
+        'FA' if team_a is None else team_a.text,
         tds[3].text,
         tds[4].text,
         tds[5].text,
