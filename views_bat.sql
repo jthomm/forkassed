@@ -255,10 +255,10 @@ GROUP BY t.fg_id
 
   CREATE VIEW v_bat_value AS
   SELECT *,
-         12.7156*hr/g - 2.1223 AS hr_v,
-         6.2007*rbi/g - 3.3974 AS rbi_v,
-         9.3774*sb/g - 0.6894 AS sb_v,
-         8.8916*r/g - 5.0863 AS r_v,
-         8.2050*(1.0*ab/g)*(1.0*(b1 + b2 + b3 + hr)/ab - 0.2821) AS ba_v
+         15.847*hr/g - 2.6078 AS hr_v,
+         7.9508*rbi/g - 4.3747 AS rbi_v,
+         13.735*sb/g - 0.9119 AS sb_v,
+         8.5607*r/g - 4.6007 AS r_v,
+         7.9354*(1.0*ab/g)*(1.0*(b1 + b2 + b3 + hr)/ab - 0.2755) AS ba_v
     FROM v_bat
 ;
