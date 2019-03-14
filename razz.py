@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 
 import sys
 from lxml import etree
@@ -15,7 +15,7 @@ for tr in trs:
     name_a = tds[1].find('./a')
     team_a = tds[2].find('./a')
     writer.writerow((
-        name_a.attrib['href'].split('/')[2],
+        name_a.attrib['href'].split('/')[4],
         name_a.text,
         'FA' if team_a is None else team_a.text,
         tds[3].text,
