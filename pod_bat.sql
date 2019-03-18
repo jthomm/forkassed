@@ -1,6 +1,7 @@
 CREATE TABLE pod_bat (
     name TEXT
   , fg_id TEXT
+  , nfbc_adp FLOAT
   , age INT
   , lg TEXT
   , team TEXT
