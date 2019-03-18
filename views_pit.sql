@@ -251,10 +251,10 @@ GROUP BY t.fg_id
 
   CREATE VIEW v_pit_value AS
   SELECT *,
-         5.6022*w/g - 1.9762 AS w_v,
-         4.214*sv/g - 0.4692 AS sv_v,
-         (1/3.73)*(1.0*ip/g)*(3.07 - era) AS era_v,
-         1.656*(1.0*ip/g)*(1.14 - whip) AS whip_v,
-         0.5047*so/g - 2.336 AS so_v
+         5.3821*w/g - 1.4784 AS w_v,
+         4.3066*((sv + hld)/g) - 0.705 AS sv_v,
+         0.2906*(1.0*ip/g)*(3.11 - era) AS era_v,
+         1.8566*(1.0*ip/g)*(1.10 - whip) AS whip_v,
+         0.428*so/g - 1.6609 AS so_v
     FROM v_pit
 ;
